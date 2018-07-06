@@ -55,8 +55,8 @@ def conv_prev_concat(x, y):
     if x_shapes[:2] == y_shapes[:2]:
         return tf.concat(3, [x, y*tf.ones([x_shapes[0], x_shapes[1], x_shapes[2], y_shapes[3]])])
     else:
-        print x_shapes[:2]
-        print y_shapes[:2]
+        print (x_shapes[:2])
+        print (y_shapes[:2])
 
 def conv2d(input_, output_dim, 
            k_h=5, k_w=5, d_h=2, d_w=2, stddev=0.02,
