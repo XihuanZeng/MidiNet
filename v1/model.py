@@ -16,6 +16,27 @@ class MidiNet(object):
                  y_dim=None, prev_dim=1, z_dim=100, gf_dim=64, df_dim=64,
                  gfc_dim=1024, dfc_dim=1024, c_dim=1, dataset_name='default',
                  checkpoint_dir=None, sample_dir=None, gen_dir= None):
+        """
+        :param sess:
+        :param is_crop: no use
+        :param batch_size:
+        :param sample_size: how many sample music at one time you want to generate
+        :param output_w: 16 for 16th note as the granular level for representing music
+        :param output_h: 128 notes from C0 to G10
+        :param y_dim: dimension of label, for MNIST it is 10. In main this number is set to be 13
+        :param prev_dim: used only in MidiNet, it is a boolean, if set True, then generator use prev dimension
+        :param z_dim: dimension for random noise for generator
+        :param gf_dim:
+        :param df_dim:
+        :param gfc_dim:
+        :param dfc_dim: The above 4 set the number of depth of layer in the generator and discriminator model
+        :param c_dim: default 1, is the number of midi track
+        :param dataset_name:
+        :param checkpoint_dir:
+        :param sample_dir:
+        :param gen_dir:
+        :return:
+        """
         self.sess = sess
         self.is_crop = is_crop
         self.is_grayscale = (c_dim == 1)

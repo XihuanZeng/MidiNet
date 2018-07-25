@@ -2,8 +2,8 @@
 import os
 import scipy.misc
 import numpy as np
-from model import MidiNet
-from utils import pp, to_json, generation_test
+from v1.model import MidiNet
+from v1.utils import pp, to_json, generation_test
 
 os.environ["CUDA_VISIBLE_DEVICES"] = '1'
 
@@ -38,8 +38,10 @@ def main(_):
 
     with tf.Session() as sess:
         if FLAGS.dataset == 'MidiNet_v1':
-            model = MidiNet(sess,  batch_size=FLAGS.batch_size,y_dim=13, output_w=FLAGS.output_w, output_h=FLAGS.output_h, c_dim=FLAGS.c_dim,
-                    dataset_name=FLAGS.dataset, is_crop=FLAGS.is_crop, checkpoint_dir=FLAGS.checkpoint_dir, sample_dir=FLAGS.sample_dir, gen_dir=FLAGS.gen_dir)
+            model = MidiNet(sess,  batch_size=FLAGS.batch_size, y_dim=13, output_w=FLAGS.output_w,
+                            output_h=FLAGS.output_h, c_dim=FLAGS.c_dim, dataset_name=FLAGS.dataset,
+                            is_crop=FLAGS.is_crop, checkpoint_dir=FLAGS.checkpoint_dir,
+                            sample_dir=FLAGS.sample_dir, gen_dir=FLAGS.gen_dir)
         
         if FLAGS.is_train:
             model.train(FLAGS)
